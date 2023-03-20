@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Chamados</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
+		<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
+		<!--Links Extras-->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="custom.js"></script>
+	</head>
+	<body>
+		<div class="fluig-style-guide">
+			<form name="form" role="form">
+				<div class="panel panel-danger" id="panelInicio">
+					<div class="panel-heading">
+						<h3 class="panel-title text-white">
+							<span class="fluigicon fluigicon-fileedit icon-md" aria-hidden="true"> </span>
+							Formulário para Abertura de Chamado
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-5">
+								<label for="titulo">Título do Chamado *</label>
+								<input type="text" name="titulo" id="titulo" class="form-control">
+							</div>
+							<div class="form-group col-md-2">
+								<label for="categoria">Categoria *</label>
+								<select class="form-control" name="categoria" id="categoria">
+									<option selected disabled>--------</option>
+									<option value="e-mail">E-mail</option>
+									<option value="infraestrutura">Infraestrutura</option>
+									<option value="internet">Internet</option>
+									<option value="projetos">Projetos</option>
+									<option value="seguranca">Segurança</option>
+									<option value="acacia">Acácia</option>
+									<option value="datasul">Datasul</option>
+									<option value="fluig">Fluig</option>
+									<option value="docusing">Docusing</option>
+									<option value="hodie">Hodie</option>
+									<option value="roadnet">Roadnet</option>
+									<option value="rrJuridico">RR Jurídico</option>
+									<option value="php">PHP</option>
+									<option value="protheus">Protheus</option>
+									<option value="qbit">Qbit</option>
+									<option value="servcom">Servcom</option>
+									<option value="sharepoint">SharePoint</option>
+									<option value="suporte">Suporte</option>
+									<option value="outros">Outros</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<label for="urgencia">Urgência *</label>
+								<select name="urgencia" id="urgencia" class="form-control">
+									<option selected disabled>--------</option>
+									<option value="mtAlta">Muito Alta</option>
+									<option value="alta">Alta</option>
+									<option value="media">Média</option>
+									<option value="baixa">Baixa</option>
+									<option value="mtBaixa">Muito Baixa</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<label for="impacto">Impacto *</label>
+								<select name="impacto" id="impacto" class="form-control">
+									<option selected disabled>--------</option>
+									<option value="mtAlto">Muito Alto</option>
+									<option value="alto">Alto</option>
+									<option value="medio">Médio</option>
+									<option value="baixo">Baixo</option>
+									<option value="mtBaixo">Muito Baixo</option>
+								</select>
+							</div>
+						</div>
+						<br />
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label for="descricaoChamado">Descreva o seu Chamado *</label>
+								<textarea name="descricaoChamado" id="descricaoChamado" class="form-control" rows="10" cols="12"></textarea>
+							</div>
+						</div>
+						<br />
+						<div class="row">
+							<div class="form-group col-md-3">
+								<span>Este problema é recorrente? *</span>
+								<br />
+								<div class="custom-radio custom-radio-danger">
+									<input type="radio" name="recorrencia" value="sim" id="simRec" />
+									<label for="simRec">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-danger">
+									<input type="radio" name="recorrencia" value="nao" id="naoRec" />
+									<label for="naoRec">Não</label>
+								</div>
+								<div class="custom-radio custom-radio-danger">
+									<input type="radio" name="recorrencia" value="nao aplica" id="naoApRec" />
+									<label for="naoApRec">Não se Aplica</label>
+								</div>
+							</div>
+							<div class="form-group col-md-5">
+								<span>Este problema está afetando mais pessoas do seu setor? *</span>
+								<br />
+								<div class="custom-radio custom-radio-danger">
+									<input type="radio" name="outros" value="sim" id="simOut" />
+										<label for="simOut">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-danger">
+									<input type="radio" name="outros" value="nao" id="naoOut" />
+									<label for="naoOut">Não</label>
+								</div>
+								<div class="custom-radio custom-radio-danger">
+									<input type="radio" name="outros" value="nao aplica" id="naoApOut" />
+									<label for="naoApOut">Não se Aplica</label>
+								</div>
+							</div>
+							<div class="form-group col-md-4">
+								<span>Deseja inserir algum anexo? *</span>
+								<br />
+								<div class="custom-radio custom-radio-danger">
+									<input type="radio" name="querUpload" id="simUpload" />
+									<label for="simUpload">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-danger">
+									<input type="radio" name="querUpload" id="naoUpload" />
+									<label for="naoUpload">Não</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-danger" id="panelUpload">
+					<div class="panel-heading">	
+						<h3 class="panel-title text-white">
+							<span class="fluigicon fluigicon-file-upload icon-md" aria-hidden="true"> </span>
+							Upload de arquivos
+						</h3>
+					</div>
+					<div class="panel-body">
+						<label for="upload">Escolha o Arquivo</label>
+						<input type="file"
+							id="upload"
+							name="upload"
+							theme-small="false"
+							multiple="true"
+							upload-api='{
+								"url": "url",
+								"params": {
+									"page": "1"
+								},
+								"headers": {
+									"Content-Type": "text/plain;charset=UTF-8"
+								}
+							}'
+						>
+					</div>
+				</div>
+				<div class="panel panel-danger" id="panelTecnico">
+					<div class="panel-heading">
+						<h3 class="panel-title text-white">
+							<span class="fluigicon fluigicon-addusers icon-md" aria-hidden="true"> </span>
+							Atribuição de Chamado
+						</h3>
+					</div>
+					<div class="panel-body">
+						<table tablename="responsaveisTable" class="table table-hover" noaddbutton="true" nodeletebutton="true">
+							<thead>
+								<tr>
+									<td class="col-md-3"><button type="button" class="btn btn-danger text-white" name="btnAdcTec" id="btnAdcTec" onclick="addChild();">Adicionar Técnicos</button></td>
+									<td><label for="responsavel"><strong>Selecione o(s) Técnico(s):</strong></label></td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td style="vertical-align: middle; text-align: center; padding-top: 8px; padding-bottom: 8px;" class="form-group col-md-1 exclusao">
+										<button type="button" class="btn btn-danger" name="btnDelTec" id="btnDelTec" onclick="removeCampoHiddenBtn(this);"><span class="fluigicon fluigicon-trash fluigicon-sm" aria-hidden="true"></span></button>
+									</td>
+									<td>
+										<input type="zoom" id="responsavel" name="responsavel" data-zoom="{
+											'displayKey':'colleagueName',
+											'datasetId':'colleague',
+											'maximumSelectionLength':'1',
+											'placeholder':'Defina o Responsável',
+											'fields':[
+													{
+														'field':'colleagueId',
+														'label':'ID'
+													},{
+														'field':'colleagueName',
+														'label':'Nome',
+														'standard':'true'
+													}
+													]
+											}"
+										/>
+										<input type="hidden" name="responsavelHidden" id="responsavelHidden" readonly />
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<input type="hidden" name="matriculas" id="matriculas" class="col-md-12" readonly />
+						<hr />
+						<div class="row">
+							<div class="offset-1 col-md-10 form-group ">
+								<span>O chamado necessita de aprovação?</span>
+								<br />
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="aprovacao" value="sim" id="simAprov" />
+									<label for="simAprov">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="aprovacao" value="nao" id="naoAprov" />
+									<label for="naoAprov">Não</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-danger" id="panelAprovador">
+					<div class="panel-heading">
+						<h3 class="panel-title text-white">
+							<span class="fluigicon fluigicon-user-pending icon-md" aria-hidden="true"> </span>
+							Aprovador do chamado							
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<label for="aprovadorZoom"><h4>Informe o aprovador do chamado:</h4></label>
+							<input type="zoom" class="form-control" id="aprovadorZoom" name="aprovadorZoom" data-zoom="{
+								'displayKey':'colleagueName',
+								'datasetId':'colleague',
+								'maximumSelectionLength':'1',
+								'placeholder':'Defina o Aprovador',
+								'fields':[
+										 {
+											 'field':'colleagueId',
+											 'label':'ID'
+										 },{
+											 'field':'colleagueName',
+											 'label':'Nome',
+											 'standard':'true'
+										 }
+										 ]
+								}"
+							/>
+						</div>
+						<input type="hidden" name="aprovadorZoomHidden" id="aprovadorZoomHidden" readonly />	
+						<br />
+						<div class="row" id="aprovChd">
+							<div class="form-group col-md-10">
+								<label for="resultAprovacao">O Chamado foi: </label>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="resultAprovacao" id="chdAprovado" value="Aprovado" />
+									<label for="chdAprovado">Aprovado</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="resultAprovacao" id="chdReprovado" value="Reprovado" />
+									<label for="chdReprovado">Reprovado</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-danger" id="panelProCham">
+					<div class="panel-heading">
+						<h3 class="panel-title text-white">
+							<span class="fluigicon fluigicon-community-config icon-md" aria-hidden="true"> </span>
+							Processando o Chamado
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-3">
+								<label for="tipo">Escolha o que deseja inserir:</label>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="tipo" id="acompanhamento" value="insereAcompanhamento" />
+									<label for="acompanhamento">Acompanhamento</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="tipo" id="solucao" value="insereSolucao" />
+									<label for="solucao">Solução</label>
+								</div>
+							</div>
+						</div>
+						<br />
+						<div class="row">
+							<div class="form-group">
+								<label for="descricao" id="descricaoAcompanhamento">Descreva o Acompanhamento *</label>
+								<label for="descricao" id="descricaoSolucao">Descreva a Solução *</label>
+								<textarea name="descricao" id="descricao" class="form-control" rows="5" cols="12"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-danger" id="panelReview">
+					<div class="panel-heading">
+						<h3>
+							<span class="fluigicon fluigicon-checked icon-md" aria-hidden="true"> </span>
+							Review do Chamado
+						</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="form-group col-md-10">
+								<label for="satisfacao"><h4>O chamado foi atendido conforme o solicitado? *</h4></label>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="satisfacao" id="satisfeito" value="satisfeito" />
+									<label for="satisfeito">Sim</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="satisfacao" id="naoSatisfeito" value="naoSatisfeito" />
+									<label for="naoSatisfeito">Não</label>
+								</div>
+							</div>
+						</div>
+						<br />
+						<div class="row" id="nota">
+							<div class="form-group col-md-12">
+								<label for="avaliacao">Deixe uma nota para a resolução:</label>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="avaliacao" id="um" value="1" />
+									<label for="um">1</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="avaliacao" id="dois" value="2" />
+									<label for="dois">2</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="avaliacao" id="tres" value="3" />
+									<label for="tres">3</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="avaliacao" id="quatro" value="4" />
+									<label for="quatro">4</label>
+								</div>
+								<div class="custom-radio custom-radio-inline custom-radio-danger">
+									<input type="radio" name="avaliacao" id="cinco" value="5" />
+									<label for="cinco">5</label>
+								</div>
+							</div>
+						</div>
+						<div class="row" id="review">
+							<div class="form-group">
+								<label for="revisao">Informe o que faltou para a conclusão do chamado *</label>
+								<textarea name="revisao" id="revisao" class="form-control" cols="12" rows="8"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
